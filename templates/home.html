@@ -1,6 +1,38 @@
 {% extends 'base.html' %}
-{% block title %}HomePage{% endblock %}
-
+{% block title %}Home Page{% endblock %}
 {% block content %}
-<h1>Hello Nathan</h1>
+
+   <div class="container-fluid p-2"">
+         <div class="row p-3 m-1">
+   
+            <div class="col-xs-10 col-md-5 d-flex justify-content-center p-2 ml-md-4 ml-lg-5 mt-3 shadow shadow-sm position-relative bg-dark" style="height: 600px; border-radius: 25px;">
+               <p class="mt-4 h-50 text-center text-light font-weight-bolder" id="homepage-description">With Musify you can search for any music on Spotify! It supports search queries that look for matching tracks posted by another Spotify artist. Happy Listening!</p>
+               <img class="img-fluid position-absolute mx-auto rounded-pill h-sm-50" src="/static/search-spotify.jpg" alt="" id="homepage-img">
+            </div>
+   
+            <div class="col-1"></div>
+   
+            <div class="col-xs-10 col-md-5 d-flex justify-content-center p-2 ml-md-4 ml-lg-4 mt-3 shadow shadow-sm position-relative bg-dark" style="height: 600px; border-radius: 25px;">
+               <p class="d-inline mt-4 h-50 text-center text-light font-weight-bolder" id="homepage-description">When you visit the statistics page you will see a list of each artist you've listened too with a link to their Spotify Profile. You will also have a date picker to see each song you liked on any given day!</p>
+               <img class="img-fluid position-absolute mx-auto rounded-pill" src="/static/date-search.webp" alt="" id="homepage-img">
+            </div>
+   
+         </div>
+         <div class="row p-1 m-1">
+            
+            <div class="col-xs-10 col-md-5 d-flex justify-content-center p-2 ml-md-4 ml-lg-5 mt-3 shadow shadow-sm position-relative bg-dark" style="height: 600px; border-radius: 25px;">
+               <p class="display-5 mt-4 h-50 text-center text-light font-weight-bolder" id="homepage-description">You can create playlists that are unique to you with tracks on deck for whenever you need those paticular songs for day. Each song you add to a playlist will be in accessable from your likes page as well!</p>
+               <img class="img-fluid position-absolute mx-auto rounded-pill" src="/static/liked-song.png" alt="" id="homepage-img">
+            </div>
+   
+            <div class="col-1"></div>
+   
+            <div class="col-xs-10 col-md-5 d-flex justify-content-center p-2 ml-md-4 ml-lg-4 mt-3 shadow shadow-sm position-relative bg-dark" style="height: 600px; border-radius: 25px;">
+               <p class="display-5 mt-4 h-50 text-center text-light font-weight-bolder" id="homepage-description">Don't be afraid to mingle! You can follow other Musify Listeners and view a soft rundown of their statistics as well! Get your follower count up!</p>
+               <img class="img-fluid position-absolute mx-auto rounded-pill" src="/static/follow.avif" alt="" id="homepage-img">
+            </div>
+   
+         </div>
+   </div>
+   
 {% endblock %}

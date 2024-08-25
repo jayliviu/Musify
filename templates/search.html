@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}Spotify Search Engine{% endblock %}
+{% block content %}
+
+   <div class="container-fluid p-1" id="search-page-heading">
+      <div class="row">
+         <div class="col-12">
+            <h1 class="display-5 text-center text-dark font-italic font-weight-bolder">Welcome {{user.display_name}}! Search tracks from Spotify in the page below.</h1>
+         </div>
+      </div>
+   </div>
+
+<!-- <input type="text" class="form-control form-control-lg" placeholder="search for music" required>  -->
+
+   <div class="container-fluid p-1" id="search-page-form-container">
+
+      <form id="search-spotify-form">
+         {{search_form.hidden_tag()}}
+
+         <div class="input-group mx-auto mt-4" id="search-page-input-group">
+            {% for field in search_form if field.widget.input_type != 'hidden' %}
+               {{field(type="text", placeholder=field.label.text, class="form-control form-control-lg", id="search-spotify-input")}}
+            {% endfor %}
+            <div class="input-group-append">
+              <button type="submit" class="input-group-text text-dark" style="background-color: #9198e5;">Search</button>
+            </div>
+         </div>
+      </form>
+
+   </div>
+
+   <div class="container-fluid px-5 pb-5 pt-2" id="search-results-container">
+      <div class="w-100 h-100 p-1" style="overflow: hidden; overflow-y: scroll;">
+
+         <div class="row m-2" id="spotify-search-row">
+            
+         </div>
+
+      </div>
+   </div>
+
+   <div class="container-fluid px-5 py-3 embed-iframe-container">
+      <div class="container w-75 p-3" id="embed-iframe"></div>
+   </div>
+
+   <!-- <script src="https://open.spotify.com/embed/iframe-api/v1" async></script> -->
+   
+{% endblock %}

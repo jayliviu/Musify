@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title%}Liked Tracks{% endblock %}
+{% block content %}
+   <div class="container-fluid p-1" id="search-page-heading">
+      <div class="row">
+         <div class="col-12">
+            <h1 class="display-5 text-center text-dark font-italic font-weight-bolder">This is your likes page! Search each song you liked on a date here too!</h1>
+         </div>
+      </div>
+   </div>
+
+   <div class="container-fluid p-1" id="track-page-form-container">
+
+      <form data-user_id={{user.id}} id="search-date-form">
+
+         <div class="input-group mx-auto mt-4" id="track-page-input-group">
+            <input type="date" placeholder="Enter a date" class="form-control form-control-lg" id="search-date-input">
+            <div class="input-group-append">
+            <button type="submit" class="input-group-text text-dark" style="background-color: #9198e5;">Search</button>
+            </div>
+         </div>
+
+      </form>
+
+   </div>
+
+   <div class="container-fluid px-5 pb-5 pt-2" id="search-results-container">
+
+      <div class="w-100 h-100 p-1" style="overflow: hidden; overflow-y: scroll;">
+
+         <div class="row m-2" id="show-tracks-row">
+
+            {% for track in tracks %}
+            <div class="col-12 border border-dark rounded mb-1 liked-track-container spotify-song-container" data-track_id="{{track.id}}" data-track_spotify_id="{{track.spotify_id}}" data-track_spotify_uri="{{track.spotify_uri}}" style="background-color:rgb(216, 131, 255);">
+               <h2 class="text-center text-dark font-weight-bolder font-italic mt-2"> {{track.artist_name}} - {{track.name}}</h2>
+               <hr class="mt-1 mb-2 mx-5">
+               <p class="text-center text-dark font-italic date-created">Date Liked : {{track.date_liked[0:10]}}</p>
+               <div class="row d-flex justify-content-center align-items-center">
+                  <div class="col-5 m-2">
+                     <form action="/search">
+                     <button type="submit" class="btn btn-block btn-block-lg font-weight-bolder font-italic p-1 text-dark listen" style="background-color: #9198e5">Back to Search</button>   
+                     </form>
+                  </div> 
+                  <div class="col-5 m-2">
+                     <button class="btn btn-block btn-block-lg font-weight-bolder font-italic p-1 text-dark unlike" style="background-color: #9198e5">Unlike</button>   
+                  </div>
+               </div>
+            </div>
+            {% endfor %}
+
+         </div>
+
+      </div>
+
+   </div>
+
+{% endblock %}

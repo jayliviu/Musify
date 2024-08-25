@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title%}Playlists{% endblock %}
+{% block content %}
+   <div class="container-fluid p-1" id="search-page-heading">
+      <div class="row">
+         <div class="col-12">
+            <h1 class="display-5 text-center text-dark font-italic font-weight-bolder">Hey Listener! You may view and create playlists here with Musify.</h1>
+         </div>
+      </div>
+   </div>
+
+   <div class="container-fluid p-1" id="search-page-form-container">
+
+      <form data-user_id={{user.id}} id="create-playlist-form">
+         {{create_playlist_form.hidden_tag()}}
+
+         <div class="input-group mx-auto mt-4" id="search-page-input-group">
+            {% for field in create_playlist_form if field.widget.input_type != 'hidden' %}
+               {{field(type="text", placeholder=field.label.text, class="form-control form-control-lg", id="playlist-form-input")}}
+            {% endfor %}
+            <div class="input-group-append">
+            <button type="submit" class="input-group-text text-dark" style="background-color: #9198e5;">Create</button>
+            </div>
+         </div>
+      </form>
+
+   </div>
+
+   <div class="container-fluid px-5 pb-5 pt-2" id="search-results-container">
+
+      <div class="w-100 h-100 p-1" style="overflow: hidden; overflow-y: scroll;">
+
+         <div class="row m-2" id="show-playlist-row">
+
+            {% for playlist in playlists %}
+            <div class="col-12 border border-dark rounded mb-1 playlist-container" data-user_id="{{user.id}}" data-playlist_id={{playlist.id}} style="background-color:rgb(216, 131, 255);">
+               <h2 class="text-center text-dark font-weight-bolder font-italic mt-2"> {{user.display_name}} - {{playlist.name}}</h2>
+               <hr class="mt-1 mb-2 mx-5">
+               <p class="text-center text-dark font-italic date-created">Date Created : {{playlist.date_created[0:10]}}</p>
+               <div class="row d-flex justify-content-center align-items-center">
+                  <div class="col-5 m-2">
+                     <button class="btn btn-block btn-block-lg font-weight-bolder font-italic p-1 text-dark view" style="background-color: #9198e5">View</button>   
+                  </div>
+                  <div class="col-5 m-2">
+                     <button class="btn btn-block btn-block-lg font-weight-bolder font-italic p-1 text-dark delete" style="background-color: #9198e5">Delete</button>   
+                  </div>
+               </div>
+            </div>
+            {% endfor %}
+
+         </div>
+
+      </div>
+
+   </div>
+
+{% endblock %}

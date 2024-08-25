@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Signup{% endblock %}
+{% block content %}
+
+   <div class="container-fluid vh-100 d-flex justify-content-center align-items-center">
+      <div class="container mx-auto my-auto bg-dark shadow-lg" id="signup-box-container" style="border-radius: 25px;">
+         <div class="row">
+            <div class="col"></div>
+            <div class="col-xs-10">
+               <h1 class="display-xs-1 display-5 text-center text-light font-italic mt-md-4">Connect Musify To Your Spotify!</h1>
+            </div>
+            <div class="col"></div>
+         </div>
+         <div class="row" id="form-divider-row"></div>
+         <div class="container-fluid h-75 p-1 mt-xs-0 mt-md-3">
+            <form action="/signup" method="POST">
+               {{ form.hidden_tag() }}
+               {% for field in form if field.widget.input_type != 'hidden' %}
+               <div class="form-group m-3 mb-5">
+                  <label class="col-form-label-lg text-light font-italic" for={{field.name}}>{{field.name|capitalize}}</label>
+                  {{field(placeholder=field.label.text, class="form-control text-dark signup-login-input", id=field.name)}}
+               </div>
+               {% endfor %}
+               <button class="btn btn-block btn-lg text-light font-weight-bolder" type="submit" style="background-color: rgb(109, 121, 255);">Connect With Spotify</button>
+             </form>
+         </div>
+      </div>
+   </div>
+
+{% endblock %}
