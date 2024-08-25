@@ -8,23 +8,27 @@ import secrets
 import urllib.parse
 from base64 import b64encode, b64decode
 from flask_debugtoolbar import DebugToolbarExtension
-from secret import SECRET, CLIENT_ID, CLIENT_SECRET, REDIRECT_URL, AUTHORIZE_URL, TOKEN_URL, API_BASE_URL
+from secret import SECRET, CLIENT_ID, CLIENT_SECRET, REDIRECT_URL, AUTHORIZE_URL, TOKEN_URL, API_BASE_URL, DATA_BASE_URI
 from datetime import datetime, timedelta
 from forms import SignUpForm, LoginForm, SpotifySearchForm, CreatePlaylistForm
 
 
 app = Flask(__name__)
-app.debug = True
+# app.debug = True
 
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///musify'
-app.config['SQLALCHEMY_ECHO'] = True
+app.config['SQLALCHEMY_DATABASE_URI'] = DATA_BASE_URI
+app.config['SQLALCHEMY_ECHO'] = False
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 app.config['SECRET_KEY'] = SECRET
 
 
 connect_db(app)
-toolbar = DebugToolbarExtension(app)
+# toolbar = DebugToolbarExtension(app)
+
+
+# db.drop_all()
+# db.create_all()
 
 #Generate random state to ensure it is the same user who was redirected back to our app after authorizing Musify access to their spotify account
 alphabet = string.ascii_letters + string.digits
