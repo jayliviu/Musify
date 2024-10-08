@@ -9,6 +9,7 @@ Flask-Bcrypt==1.0.1
 Flask-DebugToolbar==0.10.1
 Flask-SQLAlchemy==2.4.1
 Flask-WTF==0.14.2
+greenlet==2.0.2
 idna==2.5
 importlib-metadata==6.7.0
 itsdangerous==1.1.0
