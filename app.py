@@ -215,7 +215,7 @@ def complete_user_signup():
              spotify_uri = data.get('uri', '')
              display_name = data.get('display_name', '')
              country = data.get('country', '')
-             image_url = data.get('images', '')[0].get('url', '')
+             image_url = data.get('images')[0].get('url', '') or None
              external_urls = data.get('external_urls').get('spotify', '')
              spotify_followers = data.get('followers').get('total', 0)
              
